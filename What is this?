@@ -1,0 +1,2 @@
+This is a project to send data (ej. temperature) with a low cost 433Mhz RF Transmitter/Reciver and STM32F407 Discovery Board.
+Using my own simple "protocol".
