@@ -54,7 +54,7 @@ static void MX_GPIO_Init(void);
 
 /* USER CODE END PFP */
 
-/* Private user code ---------------------------------------------------------*/
+/* Private user code ------------ewfe---------------------------------------------*/
 /* USER CODE BEGIN 0 */
 //int ByteInicio[8];
 //int ByteDato[8];
