@@ -21,6 +21,8 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "lcd_txt.h"
+#include "math.h"
+#include "stdio.h"
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 
@@ -54,7 +56,7 @@ static void MX_GPIO_Init(void);
 
 /* USER CODE END PFP */
 
-/* Private user code ------------ewfe---------------------------------------------*/
+/* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
 //int ByteInicio[8];
 //int ByteDato[8];
@@ -83,7 +85,7 @@ int main(void)
   HAL_Init();
 
   /* USER CODE BEGIN Init */
-  lcd_init();
+
   /* USER CODE END Init */
 
   /* Configure the system clock */
@@ -96,7 +98,7 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   /* USER CODE BEGIN 2 */
-
+  lcd_init();
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -105,12 +107,9 @@ int main(void)
     /* USER CODE END WHILE */
 	  HAL_Delay(50);
 	  lcd_clear();
-	  lcd_clear();
 	  lcd_puts(0,0,(int8_t*)"Temperatura:");
-	  lcd_puts(1,0,(int8_t*)"                ");
-	  HAL_GPIO_WritePin(GPIOD, GPIO_PIN_12, GPIO_PIN_SET);
-	    while (ByteInicioNoValido)
-	    {
+	  //HAL_GPIO_WritePin(GPIOD, GPIO_PIN_13, GPIO_PIN_SET);
+	  while (ByteInicioNoValido){
 	    //	  HAL_Delay(10);
 
 	      /* Lleno un array y continúa el programa solo si recibí el byte de inicio */
