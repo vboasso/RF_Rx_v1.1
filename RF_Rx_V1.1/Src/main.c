@@ -20,7 +20,7 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
-
+#include "lcd_txt.h"
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 
@@ -103,10 +103,14 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1) {
     /* USER CODE END WHILE */
+	  while (1) {	//while para probar lcd. borrar
 	  HAL_Delay(50);
 	  lcd_puts(0,0,(int8_t*)"Temperatura:");
+	  lcd_puts(1,0,(int8_t*)"Temperatura:");
+	  HAL_Delay(100);
+	  }
 	  //lcd_puts(1,0,(int8_t*)"                ");
-
+	  HAL_GPIO_WritePin(GPIOD, GPIO_PIN_12, GPIO_PIN_SET);
 	    while (ByteInicioNoValido)
 	    {
 	    //	  HAL_Delay(10);
