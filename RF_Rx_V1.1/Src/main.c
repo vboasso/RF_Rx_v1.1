@@ -106,7 +106,7 @@ int main(void)
   while (1) {
     /* USER CODE END WHILE */
 	  HAL_Delay(50);
-	  lcd_clear();
+	  //lcd_clear();
 	  lcd_puts(0,0,(int8_t*)"Temperatura:");
 	  //HAL_GPIO_WritePin(GPIOD, GPIO_PIN_13, GPIO_PIN_SET);
 	  while (ByteInicioNoValido){
@@ -121,6 +121,9 @@ int main(void)
 
 	    	  }
 
+	    	  HAL_GPIO_WritePin(GPIOD, GPIO_PIN_13, GPIO_PIN_SET);
+	    	  HAL_Delay(20);
+	    	  HAL_GPIO_WritePin(GPIOD, GPIO_PIN_13, GPIO_PIN_RESET);
 
 	    	  if(TramaTotal[0]==0 &&
 	    		 TramaTotal[1]==1 &&
@@ -141,6 +144,9 @@ int main(void)
 	    //		  	Paridad=SumaParidad%2;
 	    //		  	if(TramaTotal[16]==Paridad){
 	    		  ByteInicioNoValido=0;
+	    		  HAL_GPIO_WritePin(GPIOD, GPIO_PIN_14, GPIO_PIN_SET);
+	    		  HAL_Delay(100);
+	    		  HAL_GPIO_WritePin(GPIOD, GPIO_PIN_14, GPIO_PIN_RESET);
 	    		  	}
 
 	    //	  	  	  	  	  	  }
@@ -161,8 +167,8 @@ int main(void)
 	        	   }//llave for conversion bin-dec
 
 	        	 sprintf(buffer,"%d",ValorDecimal);			//convierto el valor a una cadena de caracteres
-	        	 lcd_puts(1,0,(int8_t*)"       ");				//Borro los posibles dígitos sobrantes
-	        	 lcd_puts(1,0,(int8_t*)buffer);				//imprimo en pantalla la cadena
+	        	 lcd_puts(1,0,(int8_t*)"        Grados C");				//Borro los posibles dígitos sobrantes
+	        	 lcd_puts(1,4,(int8_t*)buffer);				//imprimo en pantalla la cadena
 	        	 HAL_GPIO_WritePin(GPIOD, GPIO_PIN_12, GPIO_PIN_SET);
 	        	 HAL_Delay(100);
 	        	 HAL_GPIO_WritePin(GPIOD, GPIO_PIN_12, GPIO_PIN_RESET);
