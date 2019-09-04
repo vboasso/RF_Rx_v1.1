@@ -135,21 +135,21 @@ int main(void)
 	    		 TramaTotal[7]==0)
 	    	  	  	  	  	  	  {
 
-	    //		  int SumaParidad=0,p;
-	    //		  	for(p=15;p>=8;p--){
-	    //		  		if(TramaTotal[p]==1){
-	    //		  			SumaParidad=SumaParidad+1;
-	    //		  		}
-	    //		  	}
-	    //		  	Paridad=SumaParidad%2;
-	    //		  	if(TramaTotal[16]==Paridad){
-	    		  ByteInicioNoValido=0;
+	    		  int SumaParidad=0,p;
+	    		  	for(p=14;p>=8;p--){
+	    		  		if(TramaTotal[p]==1){
+	    		  			SumaParidad=SumaParidad+1;
+	    		  		}
+	    		  	}
+	    		  	Paridad=SumaParidad%2;
+	    		  	if(TramaTotal[15]==Paridad){
+	    		  ByteInicioNoValido=0;		//Si coinciden el byte de inicio y la paridad es correcta sale del while de recepción
 	    		  HAL_GPIO_WritePin(GPIOD, GPIO_PIN_14, GPIO_PIN_SET);
 	    		  HAL_Delay(100);
 	    		  HAL_GPIO_WritePin(GPIOD, GPIO_PIN_14, GPIO_PIN_RESET);
 	    		  	}
 
-	    //	  	  	  	  	  	  }
+	    	  	  	  	  	  	  }
 
 
 
