@@ -117,7 +117,7 @@ int main(void)
 
 
 	    		  TramaTotal[cont]=HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_9);
-	    		  HAL_Delay(10);
+	    		  HAL_Delay(20);
 
 	    	  }
 
@@ -134,7 +134,9 @@ int main(void)
 	    		 TramaTotal[6]==1 &&
 	    		 TramaTotal[7]==0)
 	    	  	  	  	  	  	  {
-
+	    		  HAL_GPIO_WritePin(GPIOD, GPIO_PIN_14, GPIO_PIN_SET);
+	    		  HAL_Delay(100);
+	    		  HAL_GPIO_WritePin(GPIOD, GPIO_PIN_14, GPIO_PIN_RESET);
 	    		  int SumaParidad=0,p;
 	    		  	for(p=14;p>=8;p--){
 	    		  		if(TramaTotal[p]==1){
@@ -143,10 +145,11 @@ int main(void)
 	    		  	}
 	    		  	Paridad=SumaParidad%2;
 	    		  	if(TramaTotal[15]==Paridad){
-	    		  ByteInicioNoValido=0;		//Si coinciden el byte de inicio y la paridad es correcta sale del while de recepción
-	    		  HAL_GPIO_WritePin(GPIOD, GPIO_PIN_14, GPIO_PIN_SET);
-	    		  HAL_Delay(100);
-	    		  HAL_GPIO_WritePin(GPIOD, GPIO_PIN_14, GPIO_PIN_RESET);
+	    		  		ByteInicioNoValido=0;		//Si coinciden el byte de inicio y la paridad es correcta sale del while de recepción
+	    		  		HAL_GPIO_WritePin(GPIOD, GPIO_PIN_12, GPIO_PIN_SET);
+	    		  		HAL_Delay(100);
+	    		  		HAL_GPIO_WritePin(GPIOD, GPIO_PIN_12, GPIO_PIN_RESET);
+
 	    		  	}
 
 	    	  	  	  	  	  	  }
@@ -154,9 +157,9 @@ int main(void)
 
 
 	      }//llave while byte inicio no válido
-	    int potencia=7;
+	    int potencia=6;
 	      	  	 ValorDecimal=0;
-	        	 for(cont=8;cont<16;cont++){
+	        	 for(cont=8;cont<15;cont++){
 	        	   	if(TramaTotal[cont]==1){	//Convierte el array binario al valor decimal r
 	        	   								//cont daría la posición del array
 	        	   		r=pow(2,(potencia));
@@ -169,9 +172,6 @@ int main(void)
 	        	 sprintf(buffer,"%d",ValorDecimal);			//convierto el valor a una cadena de caracteres
 	        	 lcd_puts(1,0,(int8_t*)"        Grados C");				//Borro los posibles dígitos sobrantes
 	        	 lcd_puts(1,4,(int8_t*)buffer);				//imprimo en pantalla la cadena
-	        	 HAL_GPIO_WritePin(GPIOD, GPIO_PIN_12, GPIO_PIN_SET);
-	        	 HAL_Delay(100);
-	        	 HAL_GPIO_WritePin(GPIOD, GPIO_PIN_12, GPIO_PIN_RESET);
 
 	        	 ByteInicioNoValido=1;
 	      	  }//llave while programa
